@@ -1,13 +1,15 @@
-# Metta Language Example:  List Operations and Graph Manipulation
+# Metta Language Example: List Operations and Graph Manipulation
 
-This repository contains examples written in Metta, demonstrating basic  list operations and graph manipulation.
+This repository contains examples written in Metta, demonstrating basic list operations and graph manipulation.
 
-## 5 functions 
-  - [is-member](#is-member)
-  - [max-value](#max-value)
-  - [map](#map)
-  - [filter](#filter)
-  - [pop](#pop)
-- [Graph Manipulation](#graph-manipulation)
-  - [Reversing edges](#reversing-edges)
-  - [Printing edges](#printing-edges)
+## 5 Functions
+- [is-member](./is-member.metta)
+- [max-value](./max-value.metta)
+- [map](./map.metta)
+- [filter](./filter.metta)
+- [pop](./pop.metta)
+
+## Graph Manipulation
+- [Reversing edges](./graph.metta)
+
+
