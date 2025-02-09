@@ -1,6 +1,6 @@
 # Image Classification with MobileNet V1
 
-This project implements a REST API for image classification using a MobileNet V1 model with TensorFlow Lite and FastAPI.
+This project implements image classification using a MobileNet V1 model with TensorFlow Lite and FastAPI.
 You can see the list of objects in `backend/labels.txt`. The model can predict from a list of 1001 different objects, including various animals and other items.
 
 ## Features
