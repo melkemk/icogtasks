@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+pillow
+tflite-runtime
+numpy<2.0.0
+python-multipart
