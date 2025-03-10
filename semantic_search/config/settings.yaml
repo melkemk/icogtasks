@@ -1,0 +1,4 @@
+model: all-MiniLM-L6-v2
+max_history: 3
+similarity_threshold: 0.4
+data_path: ../data/mental_health_faqs.csv
