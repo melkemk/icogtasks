@@ -1,0 +1,87 @@
+/* Set a light-gray page background with dark text */
+body {
+    background-color: #f0f0f0;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container styling for the chat card */
+  .container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Centered heading */
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Chat box area with slight contrast */
+  .chat-box {
+    height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #e9ecef;
+  }
+  
+  /* Message styling for both user and bot */
+  .message {
+    margin: 0.5rem 0;
+    padding: 0.75rem 1rem;
+    border-radius: 15px;
+    max-width: 80%;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  
+  /* Specific styling for user's messages */
+  .user-message {
+    background-color: #DCF8C6;
+    color: #333;
+    align-self: flex-end;
+  }
+  
+  /* Specific styling for bot's messages */
+  .bot-message {
+    background-color: #FFF;
+    color: #333;
+    align-self: flex-start;
+  }
+  
+  /* Input area styling */
+  .input-box {
+    display: flex;
+  }
+  
+  .input-box input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+  }
+  
+  .input-box .button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    font-size: 1rem;
+  }
+  
+  .input-box .button:hover {
+    background-color: #45a049;
+  }

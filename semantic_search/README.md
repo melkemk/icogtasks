@@ -25,12 +25,3 @@ docker-compose up
 ```
 You will find the frontend at [http://localhost:3000](http://localhost:3000).
 
-## Contributing
-We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) for more details.
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
-
-## Contact
-For any questions or suggestions, please open an issue or contact us at [email@example.com](mailto:email@example.com).
-
