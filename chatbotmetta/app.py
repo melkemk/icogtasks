@@ -1,39 +1,54 @@
-import os
+# app.py
 from flask import Flask, request, jsonify
-from knowledge import MedicalRAG, metta
+from flask_cors import CORS
+import os
+from dotenv import load_dotenv
+from hyperon import MeTTa
+from knowledge import initialize_knowledge_graph
+from medicalrag import MedicalRAG
 from chatbot import GrokChat, chatbot
+import threading
 
-app = Flask(__name__) 
+# Load environment variables
+load_dotenv()
 
-# Initialize RAG and LLM 
+app = Flask(__name__)
+# Enable CORS
+CORS(app)
+
+
+metta = MeTTa()
+initialize_knowledge_graph(metta)
 rag = MedicalRAG(metta)
-llm = GrokChat(api_key= os.environ.get("GROQ_API_KEY"))
-@app.route("/ask-medical", methods=["GET"])
-def ask_medical_get():
-    """Handle GET requests with a query parameter."""
-    query = request.args.get("question")
-    if not query:
-        return jsonify({"error": "No question provided"}), 400
-    response = chatbot(query, rag, llm) 
-    return jsonify({"answer": response})
+llm = GrokChat(api_key=os.getenv("GROQ_API_KEY"))
 
-@app.route("/ask-medical", methods=["POST"]) 
-def ask_medical_post():  
-    """Handle POST requests with JSON body."""
+@app.route('/chat', methods=['POST'])
+def chat():
     data = request.get_json()
-    if not data or "message" not in data or "text" not in data["message"]:
-        return jsonify({"error": "Invalid request format. Use {'message': {'text': 'query'}}"}), 400
+    if not data or "query" not in data:
+        return jsonify({"error": "Missing 'query' in request body"}), 400
     
-    query = data["message"]["text"] 
-    if query.startswith("/add"):
-        symptom_disease = llm.extract_medical_info(query[4:].strip())
-        if len(symptom_disease) == 2 and symptom_disease[0] != "unknown" and symptom_disease[1] != "unknown":
-            result = rag.add_knowledge("symptom", symptom_disease[0], symptom_disease[1])
-            return jsonify({"status": "ok", "result": result})
-        return jsonify({"status": "error", "result": "Failed to extract valid symptom-disease pair"})
-    
+    query = data["query"]
     response = chatbot(query, rag, llm)
-    return jsonify({"status": "ok", "answer": response})
+    return jsonify(response)
+
+def run_server():
+    app.run(debug=True, host="0.0.0.0", port=5000, use_reloader=False)
+
+def interactive_chat():
+    print('interactive chat')
+    while True:
+        user_input = input("\nYou: ")
+        if user_input.lower() == "exit":
+            print("Goodbye!")
+            break
+        response = chatbot(user_input, rag, llm)
+        print(response)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=True)
+    # Run the Flask server in a separate thread
+    server_thread = threading.Thread(target=run_server)
+    server_thread.daemon = True
+    server_thread.start()
+
+    interactive_chat()
