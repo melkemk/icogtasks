@@ -1,0 +1,10 @@
+(= (repeat $val $n)
+    (if (== $n 0)
+        ()
+        (let $rec (repeat $val (- $n 1))
+        (cons-atom $val  $rec))
+    )
+)
+
+!(repeat 1 5) ;; => (1 1 1 1 1)
+!(repeat 2 3) ;; => (2 2 2)
