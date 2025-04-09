@@ -1,15 +1,20 @@
-(: List Type)
-(: Nil List)
-(: Cons (-> Number List List))
-
-! (get-type (Cons 1 Nil)) ; List
-! (Cons 1 (Cons 2 (Cons 3 Nil))) ; [1,2,3]
-
-(= (map $f Nil) Nil)
-
-(= (map $f (Cons $x $xs))
-    (Cons ($f $x) (map $f $xs))
+(: filter (-> (-> Expression boolean) Expression Expression))
+(= (filter $pred $list)
+  (if (== $list ()) 
+      ()
+      (let* (
+        (($head $tail) (decons-atom $list))
+        ($restFiltered (filter $pred $tail))
+      )
+        (if ($pred $head)
+          (cons-atom $head $restFiltered)
+          $restFiltered
+        )
+      )
+  )
 )
-(= (square $x) (* $x $x))
-
-! (map square (Cons 1 (Cons 2 (Cons 3 Nil))))
+(: isEven? (-> Number boolean))
+(= (isEven? $x)
+  (== (* (/ $x 2) 2) $x)
+)
+!(filter isEven? (1 2 3 4 5 6))

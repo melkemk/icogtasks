@@ -1,13 +1,13 @@
-(= (fact $n)
+(= (fact $n) 
     (if (<= $n 1)
         1
         (* $n (fact (- $n 1)))
     )
-)
+) 
 
-(= (permutation $list $n)
+(= (permutation $list $n) 
     (let $max-permutations (fact (size-atom $list))  ;; Calculate the factorial of the list size
-        (if (> $max-permutations 1000)  ;; Arbitrary threshold to avoid combinatorial explosion
+        (if (> $max-permutations 1000)   ;; Arbitrary threshold to avoid combinatorial explosion
             ('permutation too big')  ;; Return an error if too many permutations
             (if (or (== $n 0) (== $list ()))
                 ()  ;; Base case: no permutations
@@ -21,7 +21,7 @@
             )
         )
     )
-)
+) 
 
 (= (remove-one $list $val)
     (if (== $list ())
@@ -38,4 +38,5 @@
     )
 )
 
-!(permutation (1 3 4  4) 3)  
+!(permutation (1 3 4  4) 3)   
+

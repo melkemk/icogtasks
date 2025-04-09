@@ -4,10 +4,10 @@
 (:  findAndRemove (-> Expression Atom Expression))
 (= ( findAndRemove $list $target)
     (collapse
-        (let $unit (superpose $list)
-            (if (== $unit $target)
+        (let $elem (superpose $list)
+            (if (== $elem $target)
                 (empty)
-                $unit
+                $elem
             )
         )
     )
@@ -15,3 +15,4 @@
 
 ; Example usage:  
 !(findAndRemove (1 2 3 4 5) 3) ;; Should output: (1 2 4 5)
+
