@@ -1,3 +1,5 @@
+import json
+import os
 import re
 from collections import Counter
 
@@ -20,7 +22,7 @@ class BPETokenizer:
         # print(tokenized_words)
         for word in tokenized_words.values():
             self.vocab.update(word)
-
+        # print()
         # print(self.vocab)
         # Merge pairs until vocab_size is reached
         while len(self.vocab) < self.vocab_size:
@@ -37,7 +39,7 @@ class BPETokenizer:
             # Find most frequent pair
             best_pair = max(pairs, key=pairs.get)
             self.merges.append(best_pair)
-
+            print(f"Merging {best_pair} , vocab size: {len(self.vocab)}")
             # Merge the best pair in all words
             for word in vocab: 
                 tokens = tokenized_words[word]
@@ -85,13 +87,41 @@ class BPETokenizer:
         return text.strip() 
 
 
-# Example Usage
-corpus = "to be or not to be that is the question"
-tokenizer = BPETokenizer(vocab_size=20)
+train_file = './data/ptb.train.txt'
+test_file = './data/ptb.test.txt'
+
+
+# Check if files exist
+if not os.path.exists(train_file):
+    raise FileNotFoundError(f"Training file {train_file} not found!")
+if not os.path.exists(test_file):
+    raise FileNotFoundError(f"Test file {test_file} not found!")
+
+# Load the full training and test data
+with open(train_file, 'r', encoding='utf-8') as f:
+    corpus = f.read() 
+    
+with open(test_file, 'r', encoding='utf-8') as f:
+    test_sentence = f.read() 
+
+# Set vocab_size to 8001 as per the paper
+tokenizer = BPETokenizer(vocab_size=8001)
 tokenizer.train(corpus)
 
-print("Vocabulary:", sorted(tokenizer.vocab))
-encoded = tokenizer.encode("to be or not to be")
+# Save merges to a file
+merges_file = 'merges.json'
+with open(merges_file, 'w', encoding='utf-8') as f:
+    json.dump(tokenizer.merges, f)
+print(f"Merges saved to {merges_file}")
+
+# Output results
+print("Vocabulary size:", len(tokenizer.vocab)) 
+print("Sample vocabulary:", sorted(list(tokenizer.vocab))[:20])  # Show first 20 tokens
+
+# Encode a portion of the test file
+test_sentence_chunk = test_sentence[:200]  # Limit for readability
+encoded = tokenizer.encode(test_sentence_chunk)
+print("Test sentence chunk:", test_sentence_chunk)
 print("Encoded Text:", encoded)
 decoded = tokenizer.decode(encoded)
 print("Decoded Text:", decoded)
