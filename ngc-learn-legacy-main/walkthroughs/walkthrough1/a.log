@@ -1,0 +1,185 @@
+ ./exec_experiments.sh 
+=> Running GNCN-PDH experiment!
+2025-02-06 10:23:35.687512: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1738826615.715061   38843 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1738826615.723037   38843 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-02-06 10:23:35.750527: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+/home/melek/icog/myenv/lib/python3.12/site-packages/ngclearn-0.5.0-py3.12.egg/ngclearn/engine/nodes/enode.py:9: SyntaxWarning: invalid escape sequence '\|'
+/home/melek/icog/myenv/lib/python3.12/site-packages/ngclearn-0.5.0-py3.12.egg/ngclearn/engine/nodes/enode.py:9: SyntaxWarning: invalid escape sequence '\|'
+ > Using GPU ID 0
+ >> Loading data into memory...
+2025-02-06 10:23:40.416802: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:152] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-02-06 10:23:40.418318: W external/local_xla/xla/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 313600000 exceeds 10% of free system memory.
+ >> Building  GNCN_PDH
+ > Constructing NGC graph
+ ToD -271.53983135612646  Lx 557.9669189453125 over 50176.0 samples...  
+ ToD -271.4283981323242  Lx 557.8656616210938 over 10240.0 samples... 
+-1 | ToD = -271.53983135612646  Lx = 557.9669189453125 ; vToD = -271.4283981323242  vLx = 557.8656616210938
+ train.ToD -79.98478434037189  Lx 156.81271362304688  with 50176 samples seen....                    
+-------------------------------------------------
+0 | ToD = -79.98478434037189  Lx = 156.81271362304688 ; vToD = -41.20897941589355  vLx = 94.32524871826172
+ -> Saving model checkpoint:  94.32524871826172 < 557.8656616210938
+ train.ToD -34.90296745300293  Lx 83.22550964355469  with 50176 samples seen....f
+-------------------------------------------------
+1 | ToD = -34.90296745300293  Lx = 83.22550964355469 ; vToD = -30.454038238525392  vLx = 75.03932189941406
+ -> Saving model checkpoint:  75.03932189941406 < 94.32524871826172
+ train.ToD -28.342059855558436  Lx 70.95532989501953  with 50176 samples seen...f
+-------------------------------------------------
+2 | ToD = -28.342059855558436  Lx = 70.95532989501953 ; vToD = -26.572791862487794  vLx = 67.54808807373047
+ -> Saving model checkpoint:  67.54808807373047 < 75.03932189941406
+ train.ToD -25.515392595407913  Lx 65.39585876464844  with 50176 samples seen...^[[A
+-------------------------------------------------
+3 | ToD = -25.515392595407913  Lx = 65.39585876464844 ; vToD = -24.62614164352417  vLx = 63.659095764160156
+ -> Saving model checkpoint:  63.659095764160156 < 67.54808807373047
+ train.ToD -24.026927130562918  Lx 62.374176025390625  with 50176 samples seen... 
+-------------------------------------------------
+4 | ToD = -24.026927130562918  Lx = 62.374176025390625 ; vToD = -23.53146286010742  vLx = 61.45404052734375
+ -> Saving model checkpoint:  61.45404052734375 < 63.659095764160156
+ train.ToD -23.14254243033273  Lx 60.59409713745117  with 50176 samples seen..... 
+-------------------------------------------------
+5 | ToD = -23.14254243033273  Lx = 60.59409713745117 ; vToD = -22.866683673858642  vLx = 60.1326904296875
+ -> Saving model checkpoint:  60.1326904296875 < 61.45404052734375
+ train.ToD -22.58134569440569  Lx 59.49629211425781  with 50176 samples seen.....
+-------------------------------------------------
+6 | ToD = -22.58134569440569  Lx = 59.49629211425781 ; vToD = -22.408935070037842  vLx = 59.26960372924805
+ -> Saving model checkpoint:  59.26960372924805 < 60.1326904296875
+ train.ToD -22.18452009862783  Lx 58.75394058227539  with 50176 samples seen.....
+-------------------------------------------------
+7 | ToD = -22.18452009862783  Lx = 58.75394058227539 ; vToD = -22.078313541412353  vLx = 58.681434631347656
+ -> Saving model checkpoint:  58.681434631347656 < 59.26960372924805
+ train.ToD -21.879076179192992  Lx 58.22959518432617  with 50176 samples seen....
+-------------------------------------------------
+8 | ToD = -21.879076179192992  Lx = 58.22959518432617 ; vToD = -21.81176233291626  vLx = 58.25217819213867
+ -> Saving model checkpoint:  58.25217819213867 < 58.681434631347656
+ train.ToD -21.62176904872972  Lx 57.837772369384766  with 50176 samples seen....
+-------------------------------------------------
+9 | ToD = -21.62176904872972  Lx = 57.837772369384766 ; vToD = -21.60646963119507  vLx = 57.97473907470703
+ -> Saving model checkpoint:  57.97473907470703 < 58.25217819213867
+ train.ToD -21.41987892073028  Lx 57.579185485839844  with 50176 samples seen....
+-------------------------------------------------
+10 | ToD = -21.41987892073028  Lx = 57.579185485839844 ; vToD = -21.425616645812987  vLx = 57.75848388671875
+ -> Saving model checkpoint:  57.75848388671875 < 57.97473907470703
+ train.ToD -21.242519651140487  Lx 57.3815803527832  with 50176 samples seen.....
+-------------------------------------------------
+11 | ToD = -21.242519651140487  Lx = 57.3815803527832 ; vToD = -21.26010513305664  vLx = 57.600128173828125
+ -> Saving model checkpoint:  57.600128173828125 < 57.75848388671875
+ train.ToD -21.089140035668198  Lx 57.247459411621094  with 50176 samples seen...
+-------------------------------------------------
+12 | ToD = -21.089140035668198  Lx = 57.247459411621094 ; vToD = -21.085672855377197  vLx = 57.46178436279297
+ -> Saving model checkpoint:  57.46178436279297 < 57.600128173828125
+ train.ToD -20.928747858319962  Lx 57.13862228393555  with 50176 samples seen....
+-------------------------------------------------
+13 | ToD = -20.928747858319962  Lx = 57.13862228393555 ; vToD = -20.963575458526613  vLx = 57.412574768066406
+ -> Saving model checkpoint:  57.412574768066406 < 57.46178436279297
+ train.ToD -20.794766036831604  Lx 57.079498291015625  with 50176 samples seen...
+-------------------------------------------------
+14 | ToD = -20.794766036831604  Lx = 57.079498291015625 ; vToD = -20.825428009033203  vLx = 57.350135803222656
+ -> Saving model checkpoint:  57.350135803222656 < 57.412574768066406
+ train.ToD -20.683124444922623  Lx 57.05322265625  with 50176 samples seen.......
+-------------------------------------------------
+15 | ToD = -20.683124444922623  Lx = 57.05322265625 ; vToD = -20.70822048187256  vLx = 57.301666259765625
+ -> Saving model checkpoint:  57.301666259765625 < 57.350135803222656
+ train.ToD -20.58622630761594  Lx 57.04058074951172  with 50176 samples seen.....
+-------------------------------------------------
+16 | ToD = -20.58622630761594  Lx = 57.04058074951172 ; vToD = -20.63221378326416  vLx = 57.327842712402344
+ train.ToD -20.523330046206105  Lx 57.103759765625  with 50176 samples seen......
+-------------------------------------------------
+17 | ToD = -20.523330046206105  Lx = 57.103759765625 ; vToD = -20.584245681762695  vLx = 57.406517028808594
+ train.ToD -20.467542784554617  Lx 57.150352478027344  with 50176 samples seen...
+-------------------------------------------------
+18 | ToD = -20.467542784554617  Lx = 57.150352478027344 ; vToD = -20.529195022583007  vLx = 57.46595001220703
+ train.ToD -20.428529136034907  Lx 57.21243667602539  with 50176 samples seen....
+-------------------------------------------------
+19 | ToD = -20.428529136034907  Lx = 57.21243667602539 ; vToD = -20.50017890930176  vLx = 57.52997589111328
+ train.ToD -20.387249226472814  Lx 57.240875244140625  with 50176 samples seen...
+-------------------------------------------------
+20 | ToD = -20.387249226472814  Lx = 57.240875244140625 ; vToD = -20.44921417236328  vLx = 57.52946853637695
+ train.ToD -20.336068970816477  Lx 57.22426223754883  with 50176 samples seen....
+-------------------------------------------------
+21 | ToD = -20.336068970816477  Lx = 57.22426223754883 ; vToD = -20.39302043914795  vLx = 57.49993133544922
+ train.ToD -20.28199236733573  Lx 57.17966842651367  with 50176 samples seen.....
+-------------------------------------------------
+22 | ToD = -20.28199236733573  Lx = 57.17966842651367 ; vToD = -20.354714107513427  vLx = 57.483299255371094
+ train.ToD -20.226686380347427  Lx 57.12189483642578  with 50176 samples seen....
+-------------------------------------------------
+23 | ToD = -20.226686380347427  Lx = 57.12189483642578 ; vToD = -20.293538284301757  vLx = 57.435585021972656
+ train.ToD -20.175084036223744  Lx 57.08632278442383  with 50176 samples seen....
+-------------------------------------------------
+24 | ToD = -20.175084036223744  Lx = 57.08632278442383 ; vToD = -20.26605157852173  vLx = 57.40442657470703
+ train.ToD -20.13914394378662  Lx 57.0667839050293  with 50176 samples seen......
+-------------------------------------------------
+25 | ToD = -20.13914394378662  Lx = 57.0667839050293 ; vToD = -20.245873832702635  vLx = 57.42791748046875
+ > Executed early stopping!!
+------------------------------------
+ Trial.sim_time = 9.137299986018075 h  (32894.27994966507 sec)
+2025-02-06 19:42:07.351258: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1738860127.377425  158045 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1738860127.385078  158045 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-02-06 19:42:07.411247: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+/home/melek/icog/myenv/lib/python3.12/site-packages/ngclearn-0.5.0-py3.12.egg/ngclearn/engine/nodes/enode.py:9: SyntaxWarning: invalid escape sequence '\|'
+/home/melek/icog/myenv/lib/python3.12/site-packages/ngclearn-0.5.0-py3.12.egg/ngclearn/engine/nodes/enode.py:9: SyntaxWarning: invalid escape sequence '\|'
+ > Using GPU ID 0
+ >> Loading data into memory...
+2025-02-06 19:42:11.976007: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:152] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-02-06 19:42:11.977763: W external/local_xla/xla/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 313600000 exceeds 10% of free system memory.
+/home/melek/icog/ngc-learn-legacy-main/walkthroughs/walkthrough1/extract_latents.py:121: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  return float(ToD)
+ ToD -20.49043408203125  Lx 56.01240158081055 over 50000.0 samples.....
+------------------------------------
+ Trial.sim_time = 0.23901188565625084 h  (860.442788362503 sec)
+ >> Saving extracted latents to disk:  gncn_pdh/z3_0.npy
+2025-02-06 19:56:34.510395: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1738860994.540089  165272 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1738860994.548682  165272 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-02-06 19:56:34.575793: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+ > Using GPU ID 0
+2025-02-06 19:56:38.756048: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:152] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+original z_lat.shape =  (50000, 360)
+              Y.shape =  (50000, 10)
+ Label Reduction!
+ Subset.n_batch =  1800
+z_lat.shape =  (18000, 360)
+max_z =  4.5093302726745605
+min_z =  0.0
+ > Estimating latent density...
+ ===== Start internal EM-fitting process ===== 
+Initialization 0
+fffInitialization converged. time lapse 185.11125s       lower bound 964.90525.
+Phi =
+ [0.007389 0.013556 0.018389 0.02     0.023    0.015833 0.017611 0.015222
+ 0.011722 0.013444 0.014889 0.015111 0.017667 0.012389 0.010444 0.010556
+ 0.013889 0.008389 0.015278 0.013056 0.016611 0.012667 0.010722 0.009056
+ 0.006556 0.007722 0.013889 0.017389 0.017056 0.013111 0.013333 0.010556
+ 0.014722 0.019944 0.007611 0.011944 0.017556 0.015611 0.011    0.009333
+ 0.014611 0.009444 0.013444 0.016056 0.013    0.007944 0.016056 0.015111
+ 0.0145   0.018667 0.0145   0.007833 0.018833 0.010167 0.011778 0.019611
+ 0.011722 0.021444 0.012    0.012167 0.011167 0.013833 0.018    0.008278
+ 0.013667 0.009    0.012833 0.011833 0.013722 0.008222 0.008389 0.015278
+ 0.011778 0.011111 0.009778]
+ ============================================= 
+ > Saving density estimator to: gmm.pkl
+/home/melek/icog/ngc-learn-legacy-main/walkthroughs/walkthrough1/eval_logpx.py:112: SyntaxWarning: invalid escape sequence '\l'
+  """
+2025-02-06 20:01:50.521653: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1738861310.563767  167673 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1738861310.575586  167673 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-02-06 20:01:50.615010: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+ > Using GPU ID 0
+2025-02-06 20:01:57.958801: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:152] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+ X.shape =  (10000, 784)
+ >> Loading pre-trained model: gncn_pdh/model0.ngc
+/home/melek/icog/myenv/lib/python3.12/site-packages/ngclearn-0.5.0-py3.12.egg/ngclearn/engine/nodes/enode.py:9: SyntaxWarning: invalid escape sequence '\|'
+/home/melek/icog/myenv/lib/python3.12/site-packages/ngclearn-0.5.0-py3.12.egg/ngclearn/engine/nodes/enode.py:9: SyntaxWarning: invalid escape sequence '\|'
+(10, 360)
+Batch 1999 [9995, 10000): -97.43
+ -> Final Measurement/Stat:
+      log p(x) = -97.43
+(myenv) melek@melek-ThinkPad-X380-Yoga:~/icog/ngc-learn-legacy-main/walkthroughs/walkthrough1$ 

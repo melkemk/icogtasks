@@ -1,0 +1,23 @@
+Metadata-Version: 2.2
+Name: ngclearn
+Version: 0.5.0
+Summary: NGC-Learn
+Home-page: https://github.com/ago109/ngc-learn
+Author: Alexander Ororbia
+Author-email: <ago@cs.rit.edu>
+Keywords: python,ngc-learn,predictive-processing,predictive-coding
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Research/Education
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Linux :: Ubuntu
+License-File: LICENSE
+License-File: AUTHORS
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: summary
+
+A toolkit library for building arbitrary predictive processing/coding architectures based on the neural generative coding (NGC) computational framework (Ororbia & Kifer 2022).
