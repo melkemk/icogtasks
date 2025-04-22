@@ -26,5 +26,5 @@
 # python3 fit_gmm.py --config=gncn_pdh/analyze.cfg --gpu_id=0
 # python3 eval_logpx.py --config=gncn_pdh/analyze.cfg --gpu_id=0
 
-python3 classfication.py --config=gncn_pdh/fit.cfg --gpu_id=0
-# python3 mmse.py --config=gncn_pdh/fit.cfg --gpu_id=0
+# python3 classfication.py --config=gncn_pdh/fit.cfg --gpu_id=0
+python3 mmse.py --config=gncn_pdh/fit.cfg --gpu_id=0
