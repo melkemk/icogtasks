@@ -23,7 +23,6 @@ def train(vae, data_loader, epochs=20, device='cpu'):
         total_loss = 0
         for batch_idx, (x, _) in enumerate(data_loader):
             x = x.view(-1, 784).to(device)  # Flatten MNIST images to 784 dims
-            optimizer.zero_grad()
             
             # Forward pass
             x_hat, mu, logvar = vae(x)
@@ -32,7 +31,9 @@ def train(vae, data_loader, epochs=20, device='cpu'):
             # Backward pass and optimize
             loss.backward()
             optimizer.step()
+
             total_loss += loss.item()
+            optimizer.zero_grad()
         
         avg_loss = total_loss / len(data_loader.dataset)
         print(f"Epoch {epoch+1}/{epochs}, Avg Loss: {avg_loss:.4f}")
