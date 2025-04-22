@@ -7,6 +7,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.mixture import GaussianMixture  # For GMM
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.manifold import TSNE
 
 # Load the saved VAE model (assuming gvae.py defines the VAE class)
 from gvae import VAE  
@@ -120,71 +121,7 @@ def calculate_mse_on_masked_region(vae, test_loader):
             total_masked_elements += (~mask_flat).sum().item()
     avg_mse = total_mse / total_masked_elements
     return avg_mse
-
-def main():
-    test_loader = load_data()
-    vae = load_model()
-    X_test, y_test = extract_latent_representations(vae, test_loader)
-    gmm = train_gmm(X_test)
-    error_percentage = train_logistic_regression(X_test, y_test)
-    avg_bce = calculate_bce_loss(vae, test_loader)
-    avg_mse = calculate_mse_on_masked_region(vae, test_loader)
-    
-    print(f"Shape of latent representations (X_test): {X_test.shape}")
-    print(f"Shape of labels (y_test): {y_test.shape}")
-    print(f"GMM trained with {gmm.n_components} components.")
-    print(f"Classification Error Percentage: {error_percentage:.2f}%")
-    print(f"Average BCE Loss per pixel: {avg_bce:.4f}")
-    print(f"Avg MSE on masked region: {avg_mse:.2f}")
-
-if __name__ == "__main__":
-    main()
-
-test_loader = load_data()
-vae = load_model()
-
-def bce_loss(model, loader):
-        model.eval()
-        total_bce = 0.0
-        total_mse = 0.0
-        total_samples = 0
-        with torch.no_grad():
-            for data, _ in loader:
-                data = data.view(data.size(0), -1)
-                data = (data > 0.5).float()
-                recon_data, _, _ = model(data)
-                recon_data = recon_data.view(data.size(0), -1)
-                
-                # Calculate BCE\n",
-                #bce = vae_loss_eval(recon_data, data, mu, logvar)
-                #total_bce += bce.item() 
-                
-                bce = F.binary_cross_entropy(recon_data, data, reduction='sum')
-                total_bce += bce.item() 
-                
-                # Mask exactly half of the image columns\n",
-                mask = torch.ones_like(data, dtype=torch.bool)
-                mask[:, : data.size(1) // 2] = 0
-                masked_data = data * mask.float()
-                
-                # Calculate MSE over the masked (hidden) parts\n",
-                mse = F.mse_loss(recon_data[~mask], data[~mask], reduction='sum')
-                total_mse += mse.item()
-                total_samples += data.size(0)
-    
-        # Normalize by the total number of elements
-        avg_bce = total_bce / total_samples  
-        avg_mse = total_mse / (total_samples * data.size(1) // 2)
-        print(f"BCE: {avg_bce:.4f}, Masked MSE: {avg_mse:.4f}")
-        return avg_bce, avg_mse
-    
-    # Evaluate the model using the calculate_error function
-bce_loss(vae, test_loader)
-
  
-import matplotlib.pyplot as plt
-from sklearn.manifold import TSNE
-
 def visualize_latent_space(vae, test_loader, save_path="latent_space.png"):
     vae.eval()
     latent_representations = []
@@ -215,6 +152,26 @@ def visualize_latent_space(vae, test_loader, save_path="latent_space.png"):
     # Save the figure
     plt.savefig(save_path)
     plt.show()
+def main():
+    test_loader = load_data()
+    vae = load_model()
+    X_test, y_test = extract_latent_representations(vae, test_loader)
+    gmm = train_gmm(X_test)
+    error_percentage = train_logistic_regression(X_test, y_test)
+    avg_bce = calculate_bce_loss(vae, test_loader)
+    avg_mse = calculate_mse_on_masked_region(vae, test_loader)
+    visualize_latent_space(vae, test_loader)
+    print(f"Shape of latent representations (X_test): {X_test.shape}")
+    print(f"Shape of labels (y_test): {y_test.shape}")
+    print(f"GMM trained with {gmm.n_components} components.")
+    print(f"Classification Error Percentage: {error_percentage:.2f}%")
+    print(f"Average BCE Loss per pixel: {avg_bce:.4f}")
+    print(f"Avg MSE on masked region: {avg_mse:.2f}")
 
-# Call the function to visualize
-visualize_latent_space(vae, test_loader)
+if __name__ == "__main__":
+    main()
+
+
+
+
+
