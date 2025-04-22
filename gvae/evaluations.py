@@ -110,15 +110,15 @@ def calculate_mse_on_masked_region(vae, test_loader):
             original_x = x.clone().view(-1, 784)  # Save original, flatten
             x = (x > 0.5).float()                # Binarize
             mask = torch.ones_like(x, dtype=torch.bool)
-            mask[:, :14] = 0                     # Mask left half (14 columns, flattened)
+            mask[:, 14:] = 0                     # Mask right half (14 columns, flattened)
             x = x * mask.float()                 # Apply mask
             x = (x > 0.5).float().view(-1, 784)  # Re-binarize and flatten
             mu, _ = vae.encoder(x)               # Encode
-            x_hat = vae.decoder(mu)              # Decode
-            mask_flat = mask.view(-1, 784)
-            mse = F.mse_loss(x_hat[~mask_flat], original_x[~mask_flat], reduction='sum')
+            x_hat = vae.decoder(mu)              # Decode 
+            mask_flat = mask.view(-1, 784)  
+            mse = F.mse_loss(x_hat[mask_flat], original_x[mask_flat], reduction='sum')
             total_mse += mse.item()
-            total_masked_elements += (~mask_flat).sum().item()
+            total_masked_elements += (mask_flat).sum().item()
     avg_mse = total_mse / total_masked_elements
     return avg_mse
  
@@ -153,9 +153,9 @@ def visualize_latent_space(vae, test_loader, save_path="latent_space.png"):
     plt.savefig(save_path)
     plt.show()
 def main():
-    test_loader = load_data()
+    test_loader = load_data() 
     vae = load_model()
-    X_test, y_test = extract_latent_representations(vae, test_loader)
+    X_test, y_test = extract_latent_representations(vae, test_loader) 
     gmm = train_gmm(X_test)
     error_percentage = train_logistic_regression(X_test, y_test)
     avg_bce = calculate_bce_loss(vae, test_loader)
